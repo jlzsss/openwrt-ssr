@@ -13,7 +13,7 @@ FWI=$(uci get firewall.ssr.path 2>/dev/null)  # firewall include file
 
 usage() {
 	cat <<-EOF
-		Usage: ssr-rules [options]
+		Usage: ssrr-rules [options]
 
 		Valid options are:
 
