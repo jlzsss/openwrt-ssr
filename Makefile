@@ -193,7 +193,7 @@ define Package/luci-app-shadowsocksR-Client/install
 	$(INSTALL_BIN) ./files/ssr.init $(1)/etc/init.d/ssr
 endef
 
-define Package/luci-app-ssr-Server/install
+define Package/luci-app-shadowsocksR-Server/install
 	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/controller
 	$(INSTALL_DATA) ./files/luci/controller/ssr.lua $(1)/usr/lib/lua/luci/controller/ssr.lua
 	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/i18n
@@ -214,7 +214,7 @@ define Package/luci-app-ssr-Server/install
 	$(INSTALL_BIN) ./files/ssr.init $(1)/etc/init.d/ssr
 endef
 
-define Package/luci-app-ssr-GFW/install
+define Package/luci-app-shadowsocksR-GFW/install
 	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/controller
 	$(INSTALL_DATA) ./files/luci/controller/ssr.lua $(1)/usr/lib/lua/luci/controller/ssr.lua
 	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/i18n
