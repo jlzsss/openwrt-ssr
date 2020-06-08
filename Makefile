@@ -245,7 +245,7 @@ define Package/luci-app-shadowsocksR-GFW/install
 	$(INSTALL_BIN) ./files/ssr.init $(1)/etc/init.d/ssr
 endef
 
-$(eval $(call BuildPackage,luci-app-shadowsocksR))
+#$(eval $(call BuildPackage,luci-app-shadowsocksR))
 #$(eval $(call BuildPackage,luci-app-shadowsocksR-Client))
 #$(eval $(call BuildPackage,luci-app-shadowsocksR-Server))
 $(eval $(call BuildPackage,luci-app-shadowsocksR-GFW))
