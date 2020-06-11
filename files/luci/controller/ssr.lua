@@ -59,9 +59,9 @@ if set == "gfw_data" then
   luci.sys.call("/usr/bin/ssr-gfw")
   icount = luci.sys.exec("cat /tmp/gfwnew.txt | wc -l")
   if tonumber(icount)>1000 then
-   oldcount=luci.sys.exec("cat /etc/dnsmasq.ssr/gfw_list.conf | wc -l")
+   oldcount=luci.sys.exec("cat /etc/dnsmasq.ssr/gfw-list.conf | wc -l")
    if tonumber(icount) ~= tonumber(oldcount) then
-    luci.sys.exec("cp -f /tmp/gfwnew.txt /etc/dnsmasq.ssr/gfw_list.conf")
+    luci.sys.exec("cp -f /tmp/gfwnew.txt /etc/dnsmasq.ssr/gfw-list.conf")
     retstring=tostring(math.ceil(tonumber(icount)/2))
    else
     retstring ="0"
@@ -74,13 +74,13 @@ if set == "gfw_data" then
   retstring ="-1"
  end
 elseif set == "ip_data" then
- refresh_cmd="wget -O- 'http://ftp.apnic.net/apnic/stats/apnic/delegated-apnic-latest'  2>/dev/null| awk -F\\| '/CN\\|ipv4/ { printf(\"%s/%d\\n\", $4, 32-log($5)/log(2)) }' > /tmp/china_ssr.txt"
+ refresh_cmd="wget -O- 'http://ftp.apnic.net/apnic/stats/apnic/delegated-apnic-latest'  2>/dev/null| awk -F\\| '/CN\\|ipv4/ { printf(\"%s/%d\\n\", $4, 32-log($5)/log(2)) }' > /tmp/china-ssr.txt"
  sret=luci.sys.call(refresh_cmd)
- icount = luci.sys.exec("cat /tmp/china_ssr.txt | wc -l")
+ icount = luci.sys.exec("cat /tmp/china-ssr.txt | wc -l")
  if  sret== 0 and tonumber(icount)>1000 then
-  oldcount=luci.sys.exec("cat /etc/china_ssr.txt | wc -l")
+  oldcount=luci.sys.exec("cat /etc/china-ssr.txt | wc -l")
   if tonumber(icount) ~= tonumber(oldcount) then
-   luci.sys.exec("cp -f /tmp/china_ssr.txt /etc/china_ssr.txt")
+   luci.sys.exec("cp -f /tmp/china-ssr.txt /etc/china-ssr.txt")
    retstring=tostring(tonumber(icount))
   else
    retstring ="0"
@@ -89,7 +89,7 @@ elseif set == "ip_data" then
  else
   retstring ="-1"
  end
- luci.sys.exec("rm -f /tmp/china_ssr.txt ")
+ luci.sys.exec("rm -f /tmp/china-ssr.txt ")
 else
   if nixio.fs.access("/usr/bin/wget-ssl") then
   refresh_cmd="wget --no-check-certificate -O - https://easylist-downloads.adblockplus.org/easylistchina+easylist.txt | grep ^\\|\\|[^\\*]*\\^$ | sed -e 's:||:address\\=\\/:' -e 's:\\^:/127\\.0\\.0\\.1:' > /tmp/ad.conf"
