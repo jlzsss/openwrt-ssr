@@ -12,7 +12,7 @@ local gfwmode=0
 
 local pdnsd_flag=0
 
-if nixio.fs.access("/etc/dnsmasq.ssr/gfw_list.conf") then
+if nixio.fs.access("/etc/dnsmasq.ssr/gfwlist.conf") then
 gfwmode=1		
 end
 
