@@ -56,7 +56,7 @@ if set == "gfw_data" then
  end
  sret=luci.sys.call(refresh_cmd .. " 2>/dev/null")
  if sret== 0 then
-  luci.sys.call("/usr/bin/ssr-gfw")
+  luci.sys.call("/usr/bin/ssrr-gfw")
   icount = luci.sys.exec("cat /tmp/gfwnew.txt | wc -l")
   if tonumber(icount)>1000 then
    oldcount=luci.sys.exec("cat /etc/dnsmasq.ssr/gfwlist.conf | wc -l")
