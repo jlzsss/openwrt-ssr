@@ -280,7 +280,7 @@ start_redir() {
 	if [ -z "$switch_server" ] ;then
 	local switch_time=$(uci_get_by_type global switch_time)
 	local switch_timeout=$(uci_get_by_type global switch_timeout)
-	service_start /usr/bin/ssr-switch start $switch_time $switch_timeout
+	service_start /usr/bin/ssrr-switch start $switch_time $switch_timeout
 	switch_enable=1
 	fi
 	fi
@@ -419,7 +419,7 @@ EOF
 	if [ $total_count -gt 0 ]
 	then
 	#param:server(count) redir_tcp(0:no,1:yes)  redir_udp tunnel kcp local gfw
-	service_start /usr/bin/ssr-monitor $server_count $redir_tcp $redir_udp $tunnel_enable $kcp_enable_flag $local_enable $dns_enable_flag $switch_enable
+	service_start /usr/bin/ssrr-monitor $server_count $redir_tcp $redir_udp $tunnel_enable $kcp_enable_flag $local_enable $dns_enable_flag $switch_enable
 	fi
 	fi
 	
@@ -434,9 +434,9 @@ stop() {
 	iptables -X SSR-SERVER-RULE 2>/dev/null
 	fi
   
-	killall -q -9 ssr-monitor
+	killall -q -9 ssrr-monitor
 	if [ -z "$switch_server" ] ;then
-	killall -q -9 ssr-switch
+	killall -q -9 ssrr-switch
 	fi
 	killall -q -9 ssr-redir
 	killall -q -9 ssr-tunnel
