@@ -426,7 +426,7 @@ EOF
 }
 
 stop() {
-	/usr/bin/ssr-rules -f
+	/usr/bin/ssrr-rules -f
 	srulecount=`iptables -L|grep SSR-SERVER-RULE|wc -l`
 	if [ $srulecount -gt 0 ] ;then
 	iptables -F SSR-SERVER-RULE
