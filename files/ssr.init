@@ -143,7 +143,7 @@ start_rules() {
 	fi
 	
 
-	/usr/bin/ssr-rules \
+	/usr/bin/ssrr-rules \
 		-s "$server" \
 		-l "$local_port" \
 		-S "$udp_server" \
