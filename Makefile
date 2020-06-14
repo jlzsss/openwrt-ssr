@@ -231,10 +231,10 @@ define Package/luci-app-shadowsocksR-GFW/install
 	#$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/ss-local $(1)/usr/bin/ssr-local	
 	#$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/ss-server $(1)/usr/bin/ssr-server		
 	#$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/ss-check $(1)/usr/bin/ssr-check
-	$(INSTALL_BIN) ./files/ssr.rule $(1)/usr/bin/ssrr-rules
-	$(INSTALL_BIN) ./files/ssr.monitor $(1)/usr/bin/ssrr-monitor
-	$(INSTALL_BIN) ./files/ssr.gfw $(1)/usr/bin/ssrr-gfw
-	$(INSTALL_BIN) ./files/ssr.switch $(1)/usr/bin/ssrr-switch
+	$(INSTALL_BIN) ./files/ssrr.rule $(1)/usr/bin/ssrr-rules
+	$(INSTALL_BIN) ./files/ssrr.monitor $(1)/usr/bin/ssrr-monitor
+	$(INSTALL_BIN) ./files/ssrr.gfw $(1)/usr/bin/ssrr-gfw
+	$(INSTALL_BIN) ./files/ssrr.switch $(1)/usr/bin/ssrr-switch
 	$(INSTALL_DIR) $(1)/etc/dnsmasq.ssr
 	$(INSTALL_DATA) ./files/gfwlist.conf $(1)/etc/dnsmasq.ssr/gfwlist.conf
 	$(INSTALL_DIR) $(1)/etc/config
