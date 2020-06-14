@@ -33,7 +33,7 @@ function index()
 end
 
 function check_status()
-local set ="/usr/bin/ssr-check www." .. luci.http.formvalue("set") .. ".com 80 3 1"
+local set ="/usr/bin/ssrr-check www." .. luci.http.formvalue("set") .. ".com 80 3 1"
 sret=luci.sys.call(set)
 if sret== 0 then
  retstring ="0"
