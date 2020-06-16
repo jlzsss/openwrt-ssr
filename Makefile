@@ -159,7 +159,7 @@ define Package/openwrt-ssr/install
 	$(INSTALL_DIR) $(1)/etc/config
 	$(INSTALL_DATA) ./files/ssr.config $(1)/etc/config/ssr
 	$(INSTALL_DIR) $(1)/etc
-	$(INSTALL_DATA) ./files/china_ssr.txt $(1)/etc/china_ssr.txt	
+	$(INSTALL_DATA) ./files/chinassr.txt $(1)/etc/chinassr.txt	
 	$(INSTALL_DIR) $(1)/etc/init.d
 	$(INSTALL_BIN) ./files/ssr.init $(1)/etc/init.d/ssr
 endef
