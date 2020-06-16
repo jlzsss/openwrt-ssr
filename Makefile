@@ -153,9 +153,9 @@ define Package/openwrt-ssr/install
 	#$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/ss-local $(1)/usr/bin/ssr-local	
 	#$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/ss-server $(1)/usr/bin/ssr-server		
 	#$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/ss-check $(1)/usr/bin/ssr-check
-	$(INSTALL_BIN) ./files/ssr.rule $(1)/usr/bin/ssrr-rules
-	$(INSTALL_BIN) ./files/ssr.monitor $(1)/usr/bin/ssrr-monitor
-	$(INSTALL_BIN) ./files/ssr.switch $(1)/usr/bin/ssrr-switch
+	$(INSTALL_BIN) ./files/ssrr.rule $(1)/usr/bin/ssrr-rules
+	$(INSTALL_BIN) ./files/ssrr.monitor $(1)/usr/bin/ssrr-monitor
+	$(INSTALL_BIN) ./files/ssrr.switch $(1)/usr/bin/ssrr-switch
 	$(INSTALL_DIR) $(1)/etc/config
 	$(INSTALL_DATA) ./files/ssr.config $(1)/etc/config/ssr
 	$(INSTALL_DIR) $(1)/etc
@@ -165,54 +165,6 @@ define Package/openwrt-ssr/install
 endef
 
 Package/luci-app-shadowsocksR/install = $(call Package/openwrt-ssr/install,$(1),ssr)
-
-define Package/luci-app-shadowsocksR-Client/install
-	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/controller
-	$(INSTALL_DATA) ./files/luci/controller/ssr.lua $(1)/usr/lib/lua/luci/controller/ssr.lua
-	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/i18n
-	$(INSTALL_DATA) ./files/luci/i18n/ssr.*.lmo $(1)/usr/lib/lua/luci/i18n
-	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/model/cbi/ssr
-	$(INSTALL_DATA) ./files/luci/model/cbi/ssr/*.lua $(1)/usr/lib/lua/luci/model/cbi/ssr/
-	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/view/ssr
-	$(INSTALL_DATA) ./files/luci/view/ssr/*.htm $(1)/usr/lib/lua/luci/view/ssr/
-	$(INSTALL_DIR) $(1)/etc/uci-defaults
-	$(INSTALL_BIN) ./files/root/etc/uci-defaults/luci-ssr $(1)/etc/uci-defaults/luci-ssr
-	$(INSTALL_DIR) $(1)/usr/bin
-	#$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/ss-redir $(1)/usr/bin/ssr-redir
-	#$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/ss-tunnel $(1)/usr/bin/ssr-tunnel	
-	#$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/ss-local $(1)/usr/bin/ssr-local
-	#$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/ss-check $(1)/usr/bin/ssr-check
-	$(INSTALL_BIN) ./files/ssr.rule $(1)/usr/bin/ssrr-rules
-	$(INSTALL_BIN) ./files/ssr.monitor $(1)/usr/bin/ssrr-monitor
-	$(INSTALL_BIN) ./files/ssr.switch $(1)/usr/bin/ssrr-switch
-	$(INSTALL_DIR) $(1)/etc/config
-	$(INSTALL_DATA) ./files/ssr.config $(1)/etc/config/ssr
-	$(INSTALL_DIR) $(1)/etc
-	$(INSTALL_DATA) ./files/china_ssr.txt $(1)/etc/china_ssr.txt	
-	$(INSTALL_DIR) $(1)/etc/init.d
-	$(INSTALL_BIN) ./files/ssr.init $(1)/etc/init.d/ssr
-endef
-
-define Package/luci-app-shadowsocksR-Server/install
-	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/controller
-	$(INSTALL_DATA) ./files/luci/controller/ssr.lua $(1)/usr/lib/lua/luci/controller/ssr.lua
-	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/i18n
-	$(INSTALL_DATA) ./files/luci/i18n/ssr.*.lmo $(1)/usr/lib/lua/luci/i18n
-	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/model/cbi/ssr
-	$(INSTALL_DATA) ./files/luci/model/cbi/ssr/*.lua $(1)/usr/lib/lua/luci/model/cbi/ssr/
-	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/view/ssr
-	$(INSTALL_DATA) ./files/luci/view/ssr/*.htm $(1)/usr/lib/lua/luci/view/ssr/
-	$(INSTALL_DIR) $(1)/etc/uci-defaults
-	$(INSTALL_BIN) ./files/root/etc/uci-defaults/luci-ssr $(1)/etc/uci-defaults/luci-ssr
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/ss-server $(1)/usr/bin/ssrr-server		
-	$(INSTALL_BIN) ./files/ssr.rule $(1)/usr/bin/ssrr-rules
-	$(INSTALL_BIN) ./files/ssr.monitor $(1)/usr/bin/ssrr-monitor
-	$(INSTALL_DIR) $(1)/etc/config
-	$(INSTALL_DATA) ./files/ssr.config $(1)/etc/config/ssr
-	$(INSTALL_DIR) $(1)/etc/init.d
-	$(INSTALL_BIN) ./files/ssr.init $(1)/etc/init.d/ssr
-endef
 
 define Package/luci-app-shadowsocksR-GFW/install
 	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/controller
