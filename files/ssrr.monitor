@@ -122,7 +122,7 @@ do
       logger -t "$NAME" "ssr dns tunnel error.restart!"
       killall -q -9 ssr-tunnel
 
-			( /usr/bin/ssr-tunnel -c /var/etc/ssr.json -b 0.0.0.0 -u -l 53 -L $(uci_get_by_type global tunnel_forward 8.8.4.4:53) -f /var/run/ssr-dns.pid &)
+			( /usr/bin/ssr-tunnel -c /var/etc/ssr.json -b 0.0.0.0 -u -l 5353 -L $(uci_get_by_type global tunnel_forward 8.8.4.4:53) -f /var/run/ssr-dns.pid &)
       fi   
       fi      
 done
